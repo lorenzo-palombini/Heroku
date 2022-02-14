@@ -85,4 +85,4 @@ app.use("/api/todos", require("./routes/api/todos"));
 //   res.render("index");
 // });
 
-app.listen(4000, () => console.log("Listening"));
+app.listen(process.env.PORT || 4000, () => console.log("Listening"));

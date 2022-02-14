@@ -16,7 +16,7 @@ const FileStore = require("session-file-store")(session);
 const fileStoreOptions = {};
 const MAX_AGE = process.env.MAX_AGE || 60 * 60 * 1000;
 const SECRET = process.env.SECRET || "Out secret value";
-const DEFAULT_ENV = process.env.DEFAULT_ENV || "DEVELOPMENT";
+const DEFAULT_ENV = process.env.ENV || "development";
 
 const setSession = () => {
   return session({
@@ -25,7 +25,7 @@ const setSession = () => {
     store: new FileStore(fileStoreOptions),
     cookie: {
       maxAge: MAX_AGE,
-      secure: DEFAULT_ENV === "PRODUCTION",
+      secure: DEFAULT_ENV === "production",
     },
     secret: SECRET,
     // Resave fa si che vengano salvati i dati di sessione ad ogni richiesta
