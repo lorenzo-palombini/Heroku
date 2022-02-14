@@ -1,0 +1,39 @@
+<h2>TODO LIST LOGIN</h2>
+
+{{#if signup}}
+<form action="/auth/register" enctype="application/x-www-form-urlencoded" method="post"
+    onsubmit="registerUser(this); return false">
+    <div class="mb-3">
+        <label for="name" class="form-label">NAME</label>
+        <input name="name" type="text" class="form-control" id="name" placeholder="ENTER NAME">
+    </div>
+    {{else}}
+    <form action="/auth/login" enctype="application/x-www-form-urlencoded" method="post"
+        onsubmit="loginUser(this); return false">
+        {{/if}}
+        <div class="mb-3">
+            <label for="email" class="form-label">EMAIL ADDRESS</label>
+            <input required name="email" type="email" class="form-control" id="email" placeholder="ENTER EMAIL">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">PASSWORD</label>
+            <input required name="password" type="password" class="form-control" id="password"
+                placeholder="ENTER PASSWORD">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">
+                {{#if signup}}
+                REGISTER
+                {{else}}
+                LOGIN
+                {{/if}}
+            </button>
+        </div>
+        <div class="mb-3">
+            {{#if signup}}
+            Already registred? <a href="/auth/login">LOGIN</a>
+            {{else}}
+            Not registred? <a href="/auth/signup">REGISTER</a>
+            {{/if}}
+        </div>
+    </form>

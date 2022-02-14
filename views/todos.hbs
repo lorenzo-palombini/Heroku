@@ -1,0 +1,36 @@
+<h1>{{list_name}}</h1>
+
+{{#if messages}}
+{{#each messages}}
+<div class="alert alert-success">{{this}}</div>
+{{/each}}
+{{/if}}
+
+{{#if errors}}
+{{#each errors}}
+<div class="alert alert-danger">{{this}}</div>
+{{/each}}
+{{/if}}
+
+{{>newtodo this}}
+
+{{#if todos}}
+<ul class="list-group list-group-flush" id="todos">
+  {{! #each è un loop dei valori dell'oggetto todos che proviene dai metodi in lists.js }}
+  {{#each todos}}
+  <li class="list-group-item" id="li-{{this.id}}">
+    <div class="form-check">
+      <button class="btn btn-default">
+        <i completed="{{this.completed}}" id="i-{{this.id}}"
+          class="bi {{#if this.completed}} bi-square {{else}} bi-check-square {{/if}}"></i>
+      </button>
+      <label class=" form-check-label" for="flexCheckDefault">
+        {{this.todo}}
+      </label>
+    </div>
+  </li>
+  {{/each}}
+</ul>
+{{else}}
+<h2 class="text-danger">No todos found!</h2>
+{{/if}}

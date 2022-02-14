@@ -1,0 +1,26 @@
+<!-- Chiamata in POST alla rotta /todos -->
+<form method="post" enctype="application/x-www-form-urlencoded" action="/todos" name="todo" id="todoForm">
+    <div class="row">
+        <div class="col-md-7 form-group">
+            <input required minlength="6" placeholder="INSERT NEW TODO" class="form-control" name="todo"
+                value="{{name}}" />
+        </div>
+        <div class="col-md-2 form-group">
+            <select name="listId" class="form-control" required>
+                <option value="">SELECT</option>
+                {{#each lists}}
+                <option {{#compare this.id "==" ../listId}} selected {{/compare}} value="{{this.id}}">
+                    {{this.name}} {{this.id}}
+                </option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button value="SAVE" class="btn btn-success" title="INSERT TODO">SAVE</button>
+            {{#if showBackButton}}
+            <button value="BACK" onclick="location.href='/todos" class="btn btn-danger"
+                title="BACK TO TODO">BACK</button>
+            {{/if}}
+        </div>
+    </div>
+</form>

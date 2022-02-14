@@ -1,0 +1,44 @@
+<h1>EXPRESS TODO LISTS</h1>
+
+{{#if messages}}
+{{#each messages}}
+<div class="alert alert-success">{{this}}</div>
+{{/each}}
+{{/if}}
+
+{{#if errors}}
+{{#each errors}}
+<div class="alert alert-danger">{{this}}</div>
+{{/each}}
+{{/if}}
+
+{{>newlist}}
+
+{{#if lists}}
+<ul class="list-group">
+  {{! #each è un loop dei valori dell'oggetto lists che proviene dai metodi in lists.js }}
+  {{#each lists}}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div class="col-md-10">
+      {{! link dinamico per accesso alla rotta }}
+      <a href="/lists/{{this.id}}/todos">{{this.name}}</a>
+      <span class="badge bg-danger rounded-pill">{{this.total}}</span>
+    </div>
+    <div class="col-md-2">
+      <a href="/lists/{{this.id}}/edit" class="btn btn-success" title="UPDATE LIST">
+        <i class="bi bi-pencil" style="font-size: 2rem"></i>
+      </a>
+      <form name="form{{this.id}}" method="post" action="/lists/{{this.id}}" enctype="application/x-www-form-urlencoded"
+        style="display: inline">
+        <input type="hidden" name="_method" value="DELETE" />
+        <button type="button"
+          onclick="showConfirmMsg('Delete List','Are you sure you want to delete this item?','form{{this.id}}')"
+          class="btn btn-danger" style="font-size: 2rem" title="DELETE"><i class="bi bi-trash3"></i></button>
+      </form>
+    </div>
+  </li>
+  {{/each}}
+</ul>
+{{else}}
+<h2 class="text-danger">No lists found!</h2>
+{{/if}}

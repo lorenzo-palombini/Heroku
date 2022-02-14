@@ -1,0 +1,18 @@
+<html lang="en" class="h-100">
+
+<head>
+  {{>head}}
+</head>
+
+<body class="d-flex flex-column h-100">
+  {{>header this}}
+  <!-- Begin page content -->
+  <main class="flex-shrink-0">
+    <div class="container" style="padding-top: 10px">
+      {{{body}}}
+    </div>
+  </main>
+  {{>footer this}}
+</body>
+
+</html>
