@@ -16,7 +16,7 @@ const FileStore = require("session-file-store")(session);
 const fileStoreOptions = {};
 const MAX_AGE = process.env.MAX_AGE || 60 * 60 * 1000;
 const SECRET = process.env.SECRET || "Out secret value";
-const DEFAULT_ENV = process.env.ENV || "development";
+const DEFAULT_ENV = process.env.NODE_ENV || "development";
 
 const setSession = () => {
   return session({
