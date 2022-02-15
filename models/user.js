@@ -56,6 +56,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "users",
+      tableName: "users",
       // Gli hooks sono degli eventi che si scatenato in situazioni particolari
       // In questo caso prima di creare un nuovo user la password verrà criptata
       hooks: {

@@ -25,7 +25,8 @@ const setSession = () => {
     store: new FileStore(fileStoreOptions),
     cookie: {
       maxAge: MAX_AGE,
-      secure: DEFAULT_ENV === "production",
+      httpOnly: false, // Heroku -> Il cookie così può essere inviato anche da AJAX e non solo via http da JavaScript
+      secure: false, // DEFAULT_ENV === "production", Heroku -> disabilitato perchè siamo su server di sviluppo di Heroku dove non abbiamo i certificati
     },
     secret: SECRET,
     // Resave fa si che vengano salvati i dati di sessione ad ogni richiesta

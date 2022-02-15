@@ -8,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-// Una lista ha tanti todos -> count      
+      // Una lista ha tanti todos -> count
       list.hasMany(models.todos);
-// Una lista appartiene a degli utenti -> left outer join      
+      // Una lista appartiene a degli utenti -> left outer join
       list.belongsTo(models.users);
     }
   }
@@ -39,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "lists",
+      tableName: "lists",
     }
   );
   return list;
